@@ -1,0 +1,91 @@
+/*
+ * Issues:
+ *can not reach this from other java files.
+ * Absolute constraints (shouldn't use absolute constraints)
+ */
+package boardgameama;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.event.*;
+
+/**
+ *
+ * @author this
+ */
+
+
+
+public class Board extends JPanel implements Runnable {
+private final int COLS = 500;
+private final int ROWS = (COLS*16)/9;
+
+
+public static final String NAME = "My big fat greek Volcano";
+private JFrame f;
+
+//declare contents like progress bar, score/avatar panels
+    private JProgressBar progressValcano;
+    private JButton spinner;
+//Tile Declarations
+private JPanel botLeft24;
+private JPanel tileAnyName1;
+
+//---------------------------------------------//
+//Thread t = new Thread (this);
+
+public Board(){
+    super();
+//        f.setTitle(NAME);
+        f.setBackground(new Color(153, 153, 153));
+         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setting size of game. 
+        //commented part can set a range or make size fixed.
+        
+      //  f.setSize(ROWS,COLS); //screen size (can we make it stretchy?
+           //this.setMaximumSize(new Dimension(1310, 840));
+           //this.setMinimumSize(new Dimension(1310, 840));
+           //this.setPreferredSize(new Dimension(1310, 840));
+        
+       
+        f.setLayout(new BorderLayout());
+         f.setLocationRelativeTo(null);//centers game in screen
+        f.setVisible(true);//show or hide the game boardI 
+        this.createBoard();
+}
+
+    
+    public void createBoard(){
+      
+        
+        this.botLeft24 = new JPanel();
+        this.botLeft24.setBackground(new Color(000, 204, 255));
+        this.botLeft24.setBorder(BorderFactory.createEtchedBorder());
+        this.botLeft24.setMaximumSize(new Dimension(54, 54));
+        this.botLeft24.setMinimumSize(new Dimension(54, 54));
+        this.botLeft24.setName("blank");
+        this.botLeft24.setPreferredSize(new Dimension(50, 50));
+        final GroupLayout botLeft24Layout = new GroupLayout(this.botLeft24);
+        this.botLeft24.setLayout(botLeft24Layout);
+        botLeft24Layout.setHorizontalGroup(botLeft24Layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGap(0, 50, 32767));
+        botLeft24Layout.setVerticalGroup(botLeft24Layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGap(0, 50, 32767));
+       // this.getContentPane().add(this.botLeft24, new AbsoluteConstraints(20, 400, 54, 54));
+    }
+    public void actionPerformed(ActionEvent e) //every time an act
+    {
+    
+}
+    public void run(){
+        while(true){
+            try{
+                
+            }
+            catch(Exception e){
+                
+            }
+        }
+    }
+}
