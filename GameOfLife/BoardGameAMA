@@ -1,0 +1,46 @@
+/*
+*this file is supposed to act like the main class. it is supposed to trigger board.java 
+*board.java is supposed to initialize the tile map, and assign event tiles to the slots
+ */
+package boardgameama;
+import java.awt.image.BufferedImage;
+import javax.swing.*;
+/**
+ *
+ * @author this
+ */
+public class BoardGameAMA extends JFrame {
+     JFrame f = new JFrame();
+     private final int COLS = 500;
+    private final int ROWS = (COLS*16)/9;
+    
+    //private Tile[][] board1; // all the tiles will be on the array map: needs tiles.java:tile()
+    int x,y; // for tile placement
+    
+    private BufferedImage nakedBoard;// board withOUT event tiles 
+    private BufferedImage DressedBoard;//board with event tiles 
+    
+
+    
+    
+    public BoardGameAMA(){
+       
+        f.setTitle("My big fat greek Volcano");
+        f.setSize(ROWS,COLS); //screen size (can we make it stretchy?
+        f.setLocationRelativeTo(null);//centers game in screen
+        f.setVisible(true);//show or hide the game board
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setResizable(false);//change later.
+        f.add(new Board());
+        
+    }
+    
+        
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+       new Board().setVisible(true);
+    }
+    
+}
