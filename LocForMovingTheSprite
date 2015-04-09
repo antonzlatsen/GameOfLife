@@ -1,0 +1,135 @@
+/*
+this should map out all possibilities for the sprite to move along the board.
+players at the teleport square have to possible paths (teleporting if leaving the island or along the island if they have just entered.
+A teleport bool is set to true as the player approaches the teleport allowing them to teleport when the arrive, and set to false when the commit the move allowing them to travel the next island
+*/
+    
+private int LocForMovingTheSprite(int x, int y, int spaces,bool teleport) {
+        while (spaces > 0) {
+            /*movement along left side of left islands */
+            if (x == 25) {
+                if (y >= 45 && y <= 115) {
+                    space--;
+                    move(x,y,x,y-35);//move up
+                }
+                if (y>=220 && y<=290) {
+                    space--;
+                    move(x, y, x, y-35);//move up
+                }
+                if (y== 10) {
+                    space--;
+                    move(x,y,80,y);//move right
+                }
+                if (y==185) {
+                    space--;
+                    move(x,y,80,y);//move right
+                }
+        }
+            /*movement Along right side of left islands
+            if marked for teleport (190,115) or (190,185) will teleport else island path
+             */
+            if(x== 190) {
+                if (y >= 10 && y <= 80) {
+                    space--;
+                    teleport = true;
+                    move(x, y, x, y + 35);//move down
+                }
+                if (y >= 185 && y <= 255) {
+                    space--;
+                    teleport = true
+                    move(x, y, x, y + 35);//move down
+                }
+                if (y==115) {
+                    space--;
+                    if(teleport ==true) {
+                        teleport = false;
+                        move(x, y, 190, 185)
+                    }
+                    else {
+                        move(x,y,135,115)
+                    }
+                }
+
+            }
+            /*
+            movement along left side of right islands.
+            if (350,185) or (350,115) marked for tele will tele else follow island path
+            */
+            if (x==350) {
+                if (y >= 45 && y <= 115) {
+                    space--;
+                    move(x, y, x, y - 35);
+                }
+                if (y >= 220 && y <= 290) {
+                    space--;
+                    move(x, y, x, y - 35);
+                }
+                if (y==185) {
+                    space--;
+                    if(teleport ==true) {
+                        teleport = false;
+                        move(x, y, 350,115)
+                    }
+                   else {
+                        move(x,y,405,185)
+                    }
+                if (y==115) {
+                    space--;
+                    if(teleport ==true) {
+                        teleport = false;
+                        move(x, y, 350,115)
+                    }
+                    else  {
+                        move(x,y,405,185)
+                    }
+            }
+            //movement along right side of right islands
+            if (x==505){
+                if (y>=10 && y<=80){
+                    space--;
+                    move(x,y,x,y+35);
+                }
+                if (y>=185 && y<= 255) {
+                    space--;
+                    move(x, y, x, y + 35);
+                }
+                if (y==290 || y==115) {
+                space--;
+                    move(x,y,x-45,y)
+                }
+            }
+                    /* moving left along bottom of bottom islands*/
+             if((y=290) && (x=80 || x=135|| x=405||x=460){
+                        space--;
+                        move(x,y,x-55,y)
+                    }
+                    //moving along top of bot.left islands
+             if((y=185) && ( x=405||x=460){
+                        space--;
+                        move(x,y,x+55,y)
+                    }
+                    /* moving right on top right island + marked true for teleporting when reach (350,185) */
+             if((y=185) && (x=80 || x=135){
+                        teleport = true;
+                        space--;
+                        move(x,y,x+55,y)
+                    }
+                    //move left along bottom of top left island
+             if((y=115) && (x=80 || x=135){
+                        space--;
+                        move(x,y,x-55,y)
+                    }
+                    //moving left on top right island + marked for teleport when reach (350,115)
+             if((y=115) && ( x=405||x=460){
+                        teleport = true;
+                        space--;
+                        move(x,y,x-55,y)
+                    }
+                    //moving along top of the top 2 islands
+             if((y=10) && (x=80 || x=135|| x=405||x=460){
+                        space--;
+                        move(x,y,x+55,y)
+                    }
+
+        }//end loop
+    }//end method
